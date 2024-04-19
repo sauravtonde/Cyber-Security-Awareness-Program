@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css" />
+  <script></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Orbitron:wght@400..900&family=Share+Tech&family=Workbench&display=swap"
+    rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(90deg, #000000 0%, #120f15 65%, #141018 100%);
+    }
+
+    *,
+    *:before,
+    *:after {
+      box-sizing: border-box;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      /* background: linear-gradient(to right, #ea1d6f 0%, #eb466b 100%); */
+      font-size: 12px;
+      display: flex;
+      flex-direction: column;
+      font-family: "Exo 2", sans-serif;
+
+    }
+
+    body,
+    button,
+    input {
+      font-family: "Exo 2", sans-serif;
+      font-weight: 700;
+      letter-spacing: 1.4px;
+    }
+
+    .background {
+      display: flex;
+      min-height: 100vh;
+    }
+
+    .container {
+      flex: 0 1 800px;
+      margin: 30px auto 30px auto;
+      padding: 10px;
+    }
+
+    .screen {
+      position: relative;
+      background:transparent;
+      border-radius: 15px;
+      border: 2px solid white;
+      border-right: 2px solid #00dfc4 ;
+      border-bottom: 2px solid #00dfc4 ;
+    }
+
+    .screen:after {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 20px;
+      right: 20px;
+      bottom: 0;
+      border-radius: 15px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, .4);
+      z-index: -1;
+    }
+
+    .screen-header {
+      display: flex;
+      align-items: center;
+      padding: 10px 20px;
+      background:transparent;
+      border-top: 2px solid white;
+      border-bottom: 2px solid white;
+      border-top-left-radius: 15px;
+      border-top-right-radius: 15px;
+    }
+
+    .screen-header-left {
+      margin-right: auto;
+    }
+
+    .screen-header-button {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      margin-right: 3px;
+      border-radius: 8px;
+      background: white;
+    }
+
+    .screen-header-button.close {
+      background: #ed1c6f;
+    }
+
+    .screen-header-button.maximize {
+      background: #e8e925;
+    }
+
+    .screen-header-button.minimize {
+      background: #74c54f;
+    }
+
+    .screen-header-right {
+      display: flex;
+    }
+
+    .screen-header-ellipsis {
+      width: 3px;
+      height: 3px;
+      margin-left: 2px;
+      border-radius: 8px;
+      background: #999;
+    }
+
+    .screen-body {
+      display: flex;
+    }
+
+    .screen-body-item {
+      flex: 1;
+      padding: 50px;
+    }
+
+    .screen-body-item.left {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .app-title {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      color:#00dfc4;
+      font-size: 26px;
+    }
+
+    .app-title:after {
+      content: '';
+      display: block;
+      position: absolute;
+      left: 0;
+      bottom: -10px;
+      width: 25px;
+      height: 4px;
+      background: #00dfc4;
+    }
+
+    .app-contact {
+      margin-top: auto;
+      font-size: 8px;
+      color: #888;
+    }
+
+    .app-form-group {
+      margin-bottom: 15px;
+    }
+
+    .app-form-group.message {
+      margin-top: 40px;
+    }
+
+    .app-form-group.buttons {
+      margin-bottom: 0;
+      text-align: right;
+    }
+
+    .app-form-control {
+      width: 100%;
+      padding: 10px 0;
+      background: none;
+      border: none;
+      border-bottom: 1px solid #666;
+      color: #ddd;
+      font-size: 14px;
+      text-transform: uppercase;
+      outline: none;
+      transition: border-color .2s;
+    }
+
+    .app-form-control::placeholder {
+      color: #666;
+    }
+
+    .app-form-control:focus {
+      border-bottom-color: #ddd;
+    }
+
+    .app-form-button {
+      background: none;
+      border: none;
+      color: #00dfc4;
+      font-size: 14px;
+      cursor: pointer;
+      outline: none;
+    }
+
+    .app-form-button:hover {
+      color: #00dfc4;
+    }
+
+    .credits {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 20px;
+      color: #00dfc4;
+      font-family: 'Roboto Condensed', sans-serif;
+      font-size: 16px;
+      font-weight: normal;
+    }
+
+    .credits-link {
+      display: flex;
+      align-items: center;
+      color: #fff;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .dribbble {
+      width: 20px;
+      height: 20px;
+      margin: 0 5px;
+    }
+
+    @media screen and (max-width: 520px) {
+      .screen-body {
+        flex-direction: column;
+      }
+
+      .screen-body-item.left {
+        margin-bottom: 30px;
+      }
+
+      .app-title {
+        flex-direction: row;
+      }
+
+      .app-title span {
+        margin-right: 12px;
+      }
+
+      .app-title:after {
+        display: none;
+      }
+    }
+
+    @media screen and (max-width: 600px) {
+      .screen-body {
+        padding: 40px;
+      }
+
+      .screen-body-item {
+        padding: 0;
+      }
+    }
+  </style>
+  <title>Contact Us</title>
+</head>
+
+<body>
+
+
+
+  <div id="stage" class="stage"></div>
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="index.html">
+        <img src="/img/cyberlogo.png" alt="CyberWarrior Logo">
+      </a>      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon navbar-dark"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="display: flex; justify-content: space-between;">
+          <li class="nav-item">
+            <a class="nav-link active blue-hover text-light" style="font-size: 1.2rem; font-weight: bold;"
+              aria-current="page" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link blue-hover text-light" style="font-size: 1.2rem; font-weight: bold;" href="lang.html">Go
+              to
+              Test</a>
+          </li>
+          <li class=" nav-item">
+            <a class="nav-link blue-hover text-light" style="font-size: 1.2rem; font-weight: bold;"
+              href="contact.html">Contact
+              Us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link blue-hover text-light" style="font-size: 1.2rem; font-weight: bold;" href="/about.html">About
+              Us</a>
+          </li>
+        </ul>
+        <button class="btn btn-outline-success" id="blue-color" type="submit" onclick="login()">Login</button>
+        <button class="btn btn-outline-success" id="blue-color" type="submit" onclick="register()">Register</button>
+      </div>
+      <!-- <div class="login-register"> -->
+      <!-- </div> -->
+    </div>
+  </nav>
+
+
+
+  <div class="background">
+    <div class="container">
+      <div class="screen">
+        <div class="screen-header">
+          <div class="screen-header-left">
+            <div class="screen-header-button close"></div>
+            <div class="screen-header-button maximize"></div>
+            <div class="screen-header-button minimize"></div>
+          </div>
+          <div class="screen-header-right">
+            <div class="screen-header-ellipsis"></div>
+            <div class="screen-header-ellipsis"></div>
+            <div class="screen-header-ellipsis"></div>
+          </div>
+        </div>
+        <div class="screen-body">
+          <div class="screen-body-item left">
+            <div class="app-title">
+              <span>CONTACT US</span>
+            </div>
+          </div>
+          <div class="screen-body-item">
+            <div class="app-form">
+              <div class="app-form-group">
+                <input class="app-form-control" placeholder="NAME" value="">
+              </div>
+              <div class="app-form-group">
+                <input class="app-form-control" placeholder="EMAIL">
+              </div>
+              <div class="app-form-group">
+                <input class="app-form-control" placeholder="CONTACT NO">
+              </div>
+              <div class="app-form-group message">
+                <input class="app-form-control" placeholder="MESSAGE">
+              </div>
+              <div class="app-form-group buttons">
+                <button class="app-form-button">CANCEL</button>
+                <button class="app-form-button">SEND</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="waves">
+      <div class="wave" id="wave1"></div>
+      <div class="wave" id="wave2"></div>
+      <div class="wave" id="wave3"></div>
+      <div class="wave" id="wave4"></div>
+    </div>
+    <div class="work" style="display: flex; width: 100%; justify-content: space-between; z-index: 5000;">
+      <ul class="social-icon">
+        <li class="social-icon__item"><a class="social-icon__link" href="#">
+            <ion-icon name="logo-facebook"></ion-icon>
+          </a></li>
+        <li class="social-icon__item"><a class="social-icon__link" href="#">
+            <ion-icon name="logo-twitter"></ion-icon>
+          </a></li>
+        <li class="social-icon__item"><a class="social-icon__link" href="#">
+            <ion-icon name="logo-linkedin"></ion-icon>
+          </a></li>
+        <li class="social-icon__item"><a class="social-icon__link" href="#">
+            <ion-icon name="logo-instagram"></ion-icon>
+          </a></li>
+      </ul>
+      <p style="margin-left: 30px; margin-right: 30px;">CYBER WARRIORS</p>
+      <p style="margin-left: 30px; margin-right: 30px;">&copy; 2024 Cyber Warriors | All Rights Reserved</p>
+    </div>
+  </footer>
+
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+
+
+
+
+  <script src="script.js">
+    // search-box open close js code
+    let navbar = document.querySelector(".navbar");
+    let searchBox = document.querySelector(".search-box .bx-search");
+    // let searchBoxCancel = document.querySelector(".search-box .bx-x");
+
+    searchBox.addEventListener("click", () => {
+      navbar.classList.toggle("showInput");
+      if (navbar.classList.contains("showInput")) {
+        searchBox.classList.replace("bx-search", "bx-x");
+      } else {
+        searchBox.classList.replace("bx-x", "bx-search");
+      }
+    });
+
+    // sidebar open close js code
+    let navLinks = document.querySelector(".nav-links");
+    let menuOpenBtn = document.querySelector(".navbar .bx-menu");
+    let menuCloseBtn = document.querySelector(".nav-links .bx-x");
+    menuOpenBtn.onclick = function () {
+      navLinks.style.left = "0";
+    }
+    menuCloseBtn.onclick = function () {
+      navLinks.style.left = "-100%";
+    }
+
+
+    // sidebar submenu open close js code
+    let htmlcssArrow = document.querySelector(".htmlcss-arrow");
+    htmlcssArrow.onclick = function () {
+      navLinks.classList.toggle("show1");
+    }
+    let moreArrow = document.querySelector(".more-arrow");
+    moreArrow.onclick = function () {
+      navLinks.classList.toggle("show2");
+    }
+    let jsArrow = document.querySelector(".js-arrow");
+    jsArrow.onclick = function () {
+      navLinks.classList.toggle("show3");
+    }
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+    integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+    integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+
+  <script>
+    function login() {
+      window.location.href = "login.html";
+    }
+    function register() {
+      window.location.href = "register.html";
+    }
+
+  </script>
+</body>
+
+</html>

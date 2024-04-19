@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Choose Language</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nova+Square&family=Share+Tech&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Orbitron:wght@400..900&family=Share+Tech&family=Workbench&display=swap"
+    rel="stylesheet">
+  <!-- <link rel="stylesheet" href="/style.css"> -->
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* Add these styles to the end of your existing CSS */
+
+    body {
+
+      background: linear-gradient(90deg, #000000 0%, #120f15 65%, #141018 100%);
+      font-family: "Exo 2", sans-serif;
+    }
+
+    .container {
+      position: absolute;
+      height: 300px;
+      width: 600px;
+      top: 35%;
+      left: 35%;
+      display: flex;
+    }
+
+    .card {
+      display: flex;
+      height: 200px;
+      width: 200px;
+      background-color: #17141d;
+      border-radius: 10px;
+      box-shadow: -1rem 0 3rem #000;
+      transition: 0.4s ease-out;
+      position: relative;
+      left: 0px;
+    }
+
+    .card:not(:first-child) {
+      margin-left: -50px;
+    }
+
+    .card:hover {
+      transform: translateY(-20px);
+      transition: 0.4s ease-out;
+
+    }
+
+    .card:hover~.card {
+      position: relative;
+      left: 50px;
+      transition: 0.4s ease-out;
+
+    }
+
+    .title {
+      color: white;
+      font-weight: 300;
+      position: absolute;
+      top: 15px;
+      left: 20px;
+      z-index: 2;
+      border: 2px solid white;
+
+    }
+
+    .title:hover {
+      background: linear-gradient(90deg, #00dfc4 0%, rgb(43, 128, 231) 100%);
+      font-weight: bolder;
+      /* Increase font weight on hover */
+      transition: 0.7s ease-out;
+      color: black;
+      border: 4px solid white;
+
+    }
+
+    .bar {
+      position: absolute;
+      top: 100px;
+      left: 20px;
+      height: 5px;
+      width: 150px;
+    }
+
+    .emptybar {
+      background-color: #2e3033;
+      margin-top: 80px;
+      width: 100%;
+      height: 100%;
+    }
+
+    .filledbar {
+      position: absolute;
+      top: 0px;
+      z-index: 3;
+      width: 0px;
+      height: 100%;
+      margin-top: 80px;
+      background: rgb(0, 154, 217);
+      background: linear-gradient(90deg, #00dfc4 0%, rgb(109, 91, 226) 65%, rgb(43, 128, 231) 100%);
+      transition: 0.6s ease-out;
+    }
+
+    .card:hover .filledbar {
+      width: 100%;
+      transition: 0.4s ease-out;
+    }
+
+    .card a {
+      color: inherit;
+      text-decoration: none;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 2;
+      padding: 10px 20px;
+      border: 1px solid transparent;
+      border-radius: 5px;
+      background-color: rgba(255, 255, 255, 0.7);
+      transition: background-color 0.3s ease;
+    }
+
+    .card:hover a {
+      background-color: rgba(255, 255, 255, 0.9);
+    }
+
+
+
+    .choose {
+      margin-top: 100px;
+      align-items: center;
+      color: #00dfc4;
+      text-align: center;
+    }
+
+    @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600;700;800&amp;display=swap');
+
+    *,
+    *:before,
+    *:after {
+      -moz-box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+    }
+
+    .wk-desk-1 {
+      width: 8.333333%;
+    }
+
+    .wk-desk-2 {
+      width: 16.666667%;
+    }
+
+    .wk-desk-3 {
+      width: 25%;
+    }
+
+    .wk-desk-4 {
+      width: 33.333333%;
+    }
+
+    .wk-desk-5 {
+      width: 41.666667%;
+    }
+
+    .wk-desk-6 {
+      width: 50%;
+    }
+
+    .wk-desk-7 {
+      width: 58.333333%;
+    }
+
+    .wk-desk-8 {
+      width: 66.666667%;
+    }
+
+    .wk-desk-9 {
+      width: 75%;
+    }
+
+    .wk-desk-10 {
+      width: 83.333333%;
+    }
+
+    .wk-desk-11 {
+      width: 91.666667%;
+    }
+
+    .wk-desk-12 {
+      width: 100%;
+    }
+
+    @media (max-width: 1024px) {
+      .container {
+        width: 90%;
+        left: 5%;
+      }
+
+      .card {
+        width: calc(33.333333% - 20px);
+        margin-left: 10px;
+        margin-right: 10px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        width: 90%;
+        left: 5%;
+      }
+
+      .card {
+        width: calc(50% - 20px);
+        margin-left: 10px;
+        margin-right: 10px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        width: 90%;
+        left: 5%;
+      }
+
+      .card {
+        width: calc(100% - 20px);
+        margin-left: 10px;
+        margin-right: 10px;
+      }
+    }
+
+    .instruction-box {
+      width: 400px;
+      min-height: 400px;
+      display: none;
+      position: absolute;
+
+      top: 50%;
+      left: 50%;
+      transform: translate(-130%, -50%);
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      z-index: 9999;
+    }
+
+    .instruction-box.active {
+      display: block;
+      animation: fadeIn 0.5s ease forwards;
+      background: transparent;
+      border-right: 3px solid #00dfc4;
+      border-bottom: 3px solid #00dfc4;
+      box-shadow: 0 0 5px #00dfc4; /* Add shadow to the border */
+
+    
+      color: white;
+
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="index.html">
+        <img src="/img/cyberlogo.png" alt="CyberWarrior Logo">
+      </a> <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+        aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon navbar-dark"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active blue-hover text-light" style="font-size: 1.2rem; font-weight: bold;"
+              aria-current="page" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link blue-hover text-light" style="font-size: 1.2rem; font-weight: bold;" href="lang.html">Go
+              to
+              Test</a>
+          </li>
+          <li class=" nav-item">
+            <a class="nav-link blue-hover text-light" style="font-size: 1.2rem; font-weight: bold;"
+              href="contact.html">Contact
+              Us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link blue-hover text-light" style="font-size: 1.2rem; font-weight: bold;" href="/about.html">About
+              Us</a>
+          </li>
+        </ul>
+        <button class="btn btn-outline-success" id="blue-color" type="submit" onclick="login()">Login</button>
+        <button class="btn btn-outline-success" id="blue-color" type="submit" onclick="register()">Register</button>
+      </div>
+    </div>
+  </nav>
+
+
+
+
+
+
+  <div>
+    <!-- <h1 class="choose">Choose Language </h1> -->
+  </div>
+  <div class="container">
+    <div class="card">
+      <a href="#" class="title" onclick="showInstructions()">ENGLISH</a>
+
+      <div id="instructionBox" class="instruction-box">
+        <!-- Your instructions content here -->
+        <p>
+          1. Candidates with an identity card and hall ticket will be admitted to the
+          examination Hall. Arrive at least 30 minutes before the exam is due to
+          start.
+          2. Make sure your mobile phone, tablet, smart watch or any other electronic
+          communication gadgets is switched off and place it at the front together with
+          any bags, books, coats etc. Then find your seat.
+          3. Make sure you know the time and locations of your exams. Check whether
+          you should go directly to an exam hall or a waiting room.
+          4. You are allowed to bring tissues and a water bottle into the exam.
+          5. You are allowed to bring tissues and a water bottle into the exam.
+
+        </p>
+      </div>
+      <div class="bar">
+        <div class="emptybar"></div>
+        <div class="filledbar"></div>
+      </div>
+    </div>
+    <div class="card">
+      <a href="#" class="title">
+        मराठी </a>
+      <div class="bar">
+        <div class="emptybar"></div>
+        <div class="filledbar"></div>
+      </div>
+    </div>
+    <div class="card">
+      <a href="#" class="title">
+        हिन्दी </a>
+      <div class="bar">
+        <div class="emptybar"></div>
+        <div class="filledbar"></div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="waves">
+      <div class="wave" id="wave1"></div>
+      <div class="wave" id="wave2"></div>
+      <div class="wave" id="wave3"></div>
+      <div class="wave" id="wave4"></div>
+    </div>
+    <div class="work" style="display: flex; width: 100%; justify-content: space-between; z-index: 5000;">
+      <ul class="social-icon">
+        <li class="social-icon__item"><a class="social-icon__link" href="#">
+            <ion-icon name="logo-facebook"></ion-icon>
+          </a></li>
+        <li class="social-icon__item"><a class="social-icon__link" href="#">
+            <ion-icon name="logo-twitter"></ion-icon>
+          </a></li>
+        <li class="social-icon__item"><a class="social-icon__link" href="#">
+            <ion-icon name="logo-linkedin"></ion-icon>
+          </a></li>
+        <li class="social-icon__item"><a class="social-icon__link" href="#">
+            <ion-icon name="logo-instagram"></ion-icon>
+          </a></li>
+      </ul>
+      <p style="margin-left: 30px; margin-right: 30px;">CYBER WARRIORS</p>
+      <p style="margin-left: 30px; margin-right: 30px;">&copy; 2024 Cyber Warriors | All Rights Reserved</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+    integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+    integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+  <script>
+    function login() {
+      window.location.href = "login.html";
+    }
+    function register() {
+      window.location.href = "register.html";
+    }
+    function showInstructions() {
+      var instructionBox = document.getElementById("instructionBox");
+      instructionBox.classList.toggle("active");
+    }
+
+
+  </script>
+
+
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html>
